@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张华 · AI 应用开发作品集</title>
+<meta name="description" content="张华的 AI 应用开发作品集：协笔 CoWrite 多智能体写作平台、先贤阁 RAG 问答平台、拾光云图。Spring AI / RAG / Agent / SSE。">
+<style>
+:root{
+  --bg:#FAF9F6;
+  --card:#FFFFFF;
+  --ink:#1C1E21;
+  --ink-2:#5A5C61;
+  --ink-3:#8B8D92;
+  --line:#E7E4DC;
+  --line-2:#D8D4C9;
+  --accent:#B4432A;
+  --accent-soft:#F6E9E4;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono","JetBrains Mono","Cascadia Code",Consolas,"Courier New",monospace;
+  --max-w:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  text-wrap:pretty;
+}
+::selection{background:var(--accent-soft);color:var(--accent)}
+a{color:var(--accent);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.75}
+
+/* ---------- 布局容器 ---------- */
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 28px}
+section{padding:72px 0}
+.divider{border:none;border-top:1px solid var(--line);margin:0}
+
+/* ---------- 顶部导航 ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,249,246,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-name{font-weight:700;font-size:15px;letter-spacing:.02em}
+.nav-name em{font-style:normal;color:var(--accent)}
+.nav-links{display:flex;gap:26px;font-size:13.5px}
+.nav-links a{color:var(--ink-2)}
+.nav-links a:hover{color:var(--accent);opacity:1}
+@media(max-width:640px){.nav-links{gap:16px}.nav-links a:nth-child(n+4){display:none}}
+
+/* ---------- Hero ---------- */
+.hero{padding:88px 0 64px}
+.hero-kicker{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;
+  color:var(--accent);text-transform:uppercase;margin-bottom:18px;
+}
+h1{
+  font-family:var(--serif);
+  font-size:clamp(34px,5.2vw,54px);
+  font-weight:700;line-height:1.28;letter-spacing:.01em;
+  margin-bottom:22px;
+}
+.hero-sub{font-size:17px;color:var(--ink-2);max-width:640px;margin-bottom:34px}
+.hero-sub strong{color:var(--ink);font-weight:600}
+.hero-facts{display:flex;flex-wrap:wrap;gap:12px}
+.fact{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--card);border:1px solid var(--line);
+  border-radius:6px;padding:8px 16px;font-size:13.5px;color:var(--ink-2);
+}
+.fact b{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:13px}
+.fact-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+
+/* ---------- 章节标题 ---------- */
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
+.sec-num{
+  font-family:var(--mono);font-size:13px;color:var(--accent);
+  letter-spacing:.1em;flex:none;
+}
+h2{
+  font-family:var(--serif);font-size:clamp(24px,3vw,32px);
+  font-weight:700;letter-spacing:.02em;
+}
+.sec-desc{color:var(--ink-2);font-size:15px;max-width:680px;margin-bottom:36px}
+
+/* ---------- 项目卡片 ---------- */
+.project{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:40px 44px;margin-bottom:28px;
+}
+@media(max-width:640px){.project{padding:28px 22px}}
+.proj-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
+.proj-title{font-family:var(--serif);font-size:24px;font-weight:700}
+.proj-title .en{font-family:var(--mono);font-size:13px;color:var(--ink-3);font-weight:400;margin-left:10px;letter-spacing:.06em}
+.proj-link{
+  font-family:var(--mono);font-size:12.5px;color:var(--accent);
+  border:1px solid var(--line-2);border-radius:5px;padding:5px 12px;
+  display:inline-flex;align-items:center;gap:6px;transition:all .2s;
+}
+.proj-link:hover{background:var(--accent-soft);border-color:var(--accent);opacity:1}
+.proj-intro{color:var(--ink-2);font-size:15px;margin:10px 0 26px;max-width:760px}
+.proj-intro strong{color:var(--ink)}
+
+/* 技术芯片 */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.chip{
+  font-family:var(--mono);font-size:12px;color:var(--ink-2);
+  background:var(--bg);border:1px solid var(--line);
+  border-radius:4px;padding:4px 10px;letter-spacing:.02em;
+}
+.chip.hot{color:var(--accent);border-color:#E5C4BA;background:var(--accent-soft)}
+
+/* ---------- 流程图 ---------- */
+.flow-title{
+  font-family:var(--mono);font-size:12px;color:var(--ink-3);
+  letter-spacing:.16em;margin-bottom:14px;
+}
+.flow{
+  display:flex;align-items:stretch;gap:0;flex-wrap:nowrap;
+  overflow-x:auto;padding-bottom:6px;margin-bottom:32px;
+}
+.flow::-webkit-scrollbar{height:5px}
+.flow::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
+.fnode{
+  flex:1;min-width:118px;background:var(--bg);
+  border:1px solid var(--line-2);border-radius:8px;
+  padding:12px 12px 10px;text-align:center;position:relative;
+}
+.fnode .fn-t{font-size:13.5px;font-weight:600;line-height:1.45}
+.fnode .fn-s{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:3px;display:block}
+.fnode.key{border-color:var(--accent);background:var(--accent-soft)}
+.fnode.key .fn-t{color:var(--accent)}
+.farrow{
+  flex:none;display:flex;align-items:center;padding:0 7px;
+  color:var(--ink-3);font-family:var(--mono);font-size:13px;
+}
+@media(max-width:760px){
+  .flow{flex-direction:column;overflow:visible}
+  .fnode{min-width:0;text-align:left}
+  .farrow{justify-content:center;padding:4px 0;transform:rotate(90deg)}
+}
+
+/* ---------- 亮点列表 ---------- */
+.hl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 36px}
+@media(max-width:760px){.hl-grid{grid-template-columns:1fr}}
+.hl{border-top:2px solid var(--ink);padding-top:12px}
+.hl h4{font-size:15px;font-weight:700;margin-bottom:6px;display:flex;align-items:baseline;gap:8px}
+.hl h4 .idx{font-family:var(--mono);font-size:11px;color:var(--accent);flex:none}
+.hl p{font-size:13.8px;color:var(--ink-2);line-height:1.72}
+.hl p b{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:12.8px}
+
+/* ---------- 小项目条 ---------- */
+.mini{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:28px 44px;
+}
+@media(max-width:640px){.mini{padding:24px 22px}}
+.mini-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px}
+.mini-title{font-family:var(--serif);font-size:19px;font-weight:700}
+.mini-title .en{font-family:var(--mono);font-size:12px;color:var(--ink-3);font-weight:400;margin-left:8px}
+.mini p{color:var(--ink-2);font-size:14px;margin:8px 0 16px;max-width:760px}
+.mini .chips{margin-bottom:0}
+
+/* ---------- 能力矩阵 ---------- */
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:860px){.skill-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.skill-grid{grid-template-columns:1fr}}
+.skill-card{
+  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:24px 26px;
+}
+.skill-card h4{
+  font-size:15px;font-weight:700;margin-bottom:12px;
+  padding-bottom:10px;border-bottom:1px solid var(--line);
+}
+.skill-card h4 span{font-family:var(--mono);font-size:11px;color:var(--accent);margin-right:8px}
+.skill-card ul{list-style:none}
+.skill-card li{
+  font-size:13.5px;color:var(--ink-2);padding:5px 0 5px 16px;position:relative;line-height:1.6;
+}
+.skill-card li::before{
+  content:"";position:absolute;left:0;top:14px;width:6px;height:1.5px;background:var(--accent);
+}
+
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);padding:48px 0 56px;background:var(--card)}
+.foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px}
+.foot-name{font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:6px}
+.foot-tag{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);letter-spacing:.08em}
+.foot-contact{display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--ink-2)}
+.foot-contact b{font-family:var(--mono);font-size:12px;color:var(--ink-3);font-weight:400;margin-right:10px}
+.foot-note{
+  margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:12px;color:var(--ink-3);font-family:var(--mono);letter-spacing:.03em;
+}
+
+/* ---------- 入场动画 ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">张华<em> /</em> AI 应用开发</div>
+    <div class="nav-links">
+      <a href="#cowrite">协笔</a>
+      <a href="#sage">先贤阁</a>
+      <a href="#picture">云图</a>
+      <a href="#skills">能力</a>
+      <a href="#contact">联系</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-kicker">Portfolio / 2027 届 / AI Application Developer</div>
+    <h1>把大模型能力，<br>做成稳定、可交付的工程系统。</h1>
+    <p class="hero-sub">
+      我是张华，计算机科学与技术本科（27 届）。独立完成 <strong>两个开源 AI 全栈项目</strong>：
+      多智能体协作写作平台与 RAG 知识问答平台，覆盖 <strong>Agent 编排、RAG 检索链路、Function Calling、SSE 流式推送与 LLM 可观测</strong>，每个技术点都有真实代码可查。
+    </p>
+    <div class="hero-facts">
+      <span class="fact"><span class="fact-dot"></span>2 个 AI 全栈项目 · <b>源码开源</b></span>
+      <span class="fact"><span class="fact-dot"></span>主力栈 <b>Java / Spring AI</b></span>
+      <span class="fact"><span class="fact-dot"></span>模型调用 <b>DashScope / qwen 系列</b></span>
+      <span class="fact"><span class="fact-dot"></span>英语 <b>CET-6</b></span>
+    </div>
+  </div>
+</header>
+
+<hr class="divider">
+
+<!-- ============ 01 协笔 ============ -->
+<section id="cowrite">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2>协笔 CoWrite</h2></div>
+    <p class="sec-desc reveal">人机协同（Human-in-the-Loop）AI 写作平台 —— 我的主力项目，也是一个完整的多智能体编排系统。</p>
+
+    <div class="project reveal">
+      <div class="proj-head">
+        <div class="proj-title">协笔 CoWrite<span class="en">HITL AI Writing Platform</span></div>
+        <a class="proj-link" href="https://github.com/Zkaixin111/zkx-ai-passage-creator" target="_blank" rel="noopener">GitHub 源码 →</a>
+      </div>
+      <p class="proj-intro">
+        针对「AI 一次性生成全文、结果不可控、返工成本高」的痛点，将创作流程重构为 <strong>6 步可干预的智能体流水线</strong>：
+        在标题、大纲、配图三个决策点暂停等待用户确认后继续，全程通过 <strong>SSE 实时推送生成进度</strong>。
+      </p>
+
+      <div class="chips">
+        <span class="chip hot">Spring Boot 3.4</span>
+        <span class="chip hot">Spring AI Alibaba · StateGraph</span>
+        <span class="chip hot">多智能体编排</span>
+        <span class="chip">JDK 21</span>
+        <span class="chip">MyBatis-Flex</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">Redis</span>
+        <span class="chip">SSE 流式推送</span>
+        <span class="chip">AOP 可观测</span>
+      </div>
+
+      <div class="flow-title">CREATION PIPELINE / 六智能体 · 五段子图 · 三个用户确认点</div>
+      <div class="flow">
+        <div class="fnode"><div class="fn-t">标题生成</div><span class="fn-s">TitleAgent</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode key"><div class="fn-t">用户确认 ①</div><span class="fn-s">pause / edit</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode"><div class="fn-t">大纲生成</div><span class="fn-s">OutlineAgent</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode key"><div class="fn-t">用户确认 ②</div><span class="fn-s">pause / edit</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode"><div class="fn-t">正文生成</div><span class="fn-s">ContentAgent</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode"><div class="fn-t">配图分析+抓取</div><span class="fn-s">ImageAgent ×2</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode key"><div class="fn-t">用户确认 ③</div><span class="fn-s">pause / edit</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode"><div class="fn-t">合并输出</div><span class="fn-s">MergeAgent</span></div>
+      </div>
+
+      <div class="hl-grid">
+        <div class="hl">
+          <h4><span class="idx">A</span>多智能体编排与状态传递</h4>
+          <p>6 个智能体编排为 5 段子图，<b>构造时一次编译并缓存复用</b>；解决 Spring AI Alibaba OverAllState 对输入深拷贝导致节点读不到更新的问题——图状态只传 <b>taskId</b>，节点经任务注册表取原始上下文引用。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">B</span>SSE 实时进度推送</h4>
+          <p><b>13 类</b>进度消息，大纲与正文逐 chunk 下发；<b>SseEmitter(0L)</b> 永不超时以适配用户思考时长，三回调统一回收防内存泄漏，推送失败静默降级。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">C</span>配图链路性能与可用性</h4>
+          <p>策略模式抽象 <b>6 种</b>可插拔配图能力，注册表自动装配、新增零改动；双线程池物理隔离 + 多图 CompletableFuture 并行，总耗时由「图数 × 单图」收敛为单图；<b>三级降级链</b> + 单图故障隔离。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">D</span>多轮交互状态治理</h4>
+          <p><b>9 态</b>阶段状态机驱动流转，AtomicBoolean <b>CAS</b> 原子标记杜绝双击 / 超时返回导致的流程重入；30 分钟任务超时采用「操作惰性检查 + 每 5 分钟定时扫描」双保险，覆盖用户直接关浏览器的场景。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">E</span>AI 全链路可观测 + Prompt 工程</h4>
+          <p>自定义 <b>@AgentLog + AOP</b> 采集 6 个智能体入参与耗时，字段分级截断（Prompt <b>1000</b> / IO <b>2000</b> / 异常 <b>500</b>）；高频写入经 Redis List 削峰（限长 5000），每 10 秒批量落库 200 条；<b>5 套 Prompt 模板</b>集中管理 + 三层容错 JSON 解析器。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">F</span>并发与资金安全</h4>
+          <p>配额扣减由「查询-判断-更新」三步收敛为<b>单条原子 SQL</b>，以影响行数判定成败消除竞态；支付双端幂等（未支付订单复用 + 订单号唯一索引 + PENDING→PAID 单向状态机 + 回调金额校验）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ 02 先贤阁 ============ -->
+<section id="sage">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2>先贤阁</h2></div>
+    <p class="sec-desc reveal">多角色 AI 问答平台 —— 我的 RAG 全链路与 LLM 工程化实践场。</p>
+
+    <div class="project reveal">
+      <div class="proj-head">
+        <div class="proj-title">先贤阁<span class="en">Sage AI Q&amp;A Platform</span></div>
+        <a class="proj-link" href="https://github.com/Zkaixin111/zkx-ai-sage-agent" target="_blank" rel="noopener">GitHub 源码 →</a>
+      </div>
+      <p class="proj-intro">
+        基于 Spring AI + Spring Boot 构建的多角色 AI 问答平台：支持 <strong>6 位哲学家人设对话</strong>、RAG 知识库检索、工具调用与多角色思辨对辩。
+      </p>
+
+      <div class="chips">
+        <span class="chip hot">Spring AI</span>
+        <span class="chip hot">RAG 全链路</span>
+        <span class="chip hot">PGvector · HNSW</span>
+        <span class="chip">Rerank 精排</span>
+        <span class="chip">Function Calling</span>
+        <span class="chip">语义缓存</span>
+        <span class="chip">Micrometer / Prometheus</span>
+        <span class="chip">Redis</span>
+      </div>
+
+      <div class="flow-title">RAG PIPELINE / 四层检索链路</div>
+      <div class="flow">
+        <div class="fnode"><div class="fn-t">查询改写</div><span class="fn-s">Query Rewriting</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode"><div class="fn-t">多路向量召回</div><span class="fn-s">PGvector · HNSW</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode"><div class="fn-t">Rerank 精排</div><span class="fn-s">gte-rerank-v2 · Top3</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode key"><div class="fn-t">上下文注入</div><span class="fn-s">角色记忆模板</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode"><div class="fn-t">人设回答</div><span class="fn-s">SSE 流式</span></div>
+      </div>
+
+      <div class="hl-grid">
+        <div class="hl">
+          <h4><span class="idx">A</span>RAG 四层检索链路</h4>
+          <p>Query Rewriting → 多路向量召回（PGvector HNSW，合并去重）→ Rerank 精排（gte-rerank-v2 取 Top3）→ 上下文注入；检索片段包装为角色「记忆」，避免强人设出戏。每位先贤独立向量表，按角色隔离。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">B</span>AI 工具调用（Function Calling）</h4>
+          <p>注册 <b>5 类工具</b>（文件操作 / 联网搜索 / 天气查询 / 先贤语录检索 / 终止控制），模型自主决策是否调用；装饰器无侵入包装全部工具回调采集调用指标，语录检索工具与 RAG 向量库联动。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">C</span>对话记忆持久化</h4>
+          <p>自定义 <b>SummaryChatMemory</b> 替换 Spring AI 原生滑动窗口：窗口溢出自动调用 LLM 压缩为摘要并保留最近 N 条；底层 Redis AOF 持久化，服务重启不丢记忆。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">D</span>两级缓存降本</h4>
+          <p>① <b>语义缓存</b>：pgvector 余弦相似度匹配历史 Q&amp;A（阈值 <b>0.92</b>），命中零 Token 消耗、毫秒级响应；② <b>Embedding 缓存</b>：装饰器模式包装 EmbeddingModel，查询向量 Redis 缓存 <b>TTL 7 天</b>，相同问题零 API 调用。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">E</span>思辨决斗场</h4>
+          <p>Redis 会话状态机（<b>5 态</b>流转）管理三轮对辩，双方携带各自 RAG 知识库发言；SSE 结构化事件流式输出，单轮响应约 <b>8 秒</b>（实测），TTL 30 分钟自动回收，含防重复投票与限流。</p>
+        </div>
+        <div class="hl">
+          <h4><span class="idx">F</span>LLM 全链路可观测</h4>
+          <p>基于 Micrometer + Actuator 对 <b>五类对象</b>（LLM 调用 / 工具调用 / RAG 检索 / Embedding 缓存 / 语义缓存）全链路打点，采集 Token 消耗、耗时、错误率与缓存命中率，对接 Prometheus / Grafana。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ 03 拾光云图 ============ -->
+<section id="picture">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2>拾光云图</h2></div>
+    <p class="sec-desc reveal">前后端分离的图片云平台 —— 后端工程能力与高并发场景的练兵场。</p>
+
+    <div class="mini reveal">
+      <div class="mini-head">
+        <div class="mini-title">拾光云图<span class="en">Picture Cloud Platform</span></div>
+        <a class="proj-link" href="https://github.com/Zkaixin111" target="_blank" rel="noopener">GitHub 主页 →</a>
+      </div>
+      <p>
+        Vue3 + Spring Boot 的图片共享平台，主打协同编辑、AI 能力与检索：多用户空间管理、图片上传与检索、AI 自动打标、以图搜图。
+        工程亮点集中在<b style="color:var(--ink)">并发控制、异步化与缓存体系</b>三块。
+      </p>
+      <div class="chips">
+        <span class="chip hot">WebSocket + Disruptor 协同编辑</span>
+        <span class="chip hot">Caffeine + Redis 两级缓存</span>
+        <span class="chip">RabbitMQ 异步 AI 打标</span>
+        <span class="chip">模板方法 + 策略模式上传</span>
+        <span class="chip">Sa-Token 权限</span>
+        <span class="chip">Spring Boot 2.7 / JDK 8</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ 能力矩阵 ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2>工程能力</h2></div>
+    <p class="sec-desc reveal">按「AI 应用 → 后端支撑 → 工程素养」三层组织，每一条都在项目里真实使用过。</p>
+
+    <div class="skill-grid reveal">
+      <div class="skill-card">
+        <h4><span>AI</span>AI 应用开发</h4>
+        <ul>
+          <li>Spring AI / Spring AI Alibaba 应用开发</li>
+          <li>RAG 检索增强：分片入库 → 向量召回 → 重排</li>
+          <li>多 Agent 编排（StateGraph）与任务状态机</li>
+          <li>Function Calling 工具集成</li>
+          <li>Prompt 工程：模板管理 + 结构化输出容错解析</li>
+          <li>LLM 可观测：Token / 耗时 / 错误率 / 缓存命中</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4><span>BE</span>Java 后端</h4>
+        <ul>
+          <li>Spring Boot / MyBatis-Plus / MyBatis-Flex</li>
+          <li>MySQL 索引设计与 SQL 优化</li>
+          <li>Redis 缓存体系（两级缓存 / 分布式锁）</li>
+          <li>RabbitMQ 异步消息（手动 ACK / 死信兜底）</li>
+          <li>线程池治理与并发控制（CAS / 原子更新）</li>
+          <li>SSE / WebSocket 流式与实时通信</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4><span>ENG</span>工程素养</h4>
+        <ul>
+          <li>设计模式落地：策略 / 模板方法 / 装饰器 / 门面</li>
+          <li>Git 协作与版本管理</li>
+          <li>AI 编程工具深度使用（辅助编码 / 测试 / 排障）</li>
+          <li>接口文档与部署说明撰写</li>
+          <li>阅读官方文档快速上手新框架</li>
+          <li>Vue3 前端开发（全栈交付能力）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-name">张华</div>
+        <div class="foot-tag">AI APPLICATION DEVELOPER · 2027 届 · 广州 / 深圳</div>
+      </div>
+      <div class="foot-contact">
+        <div><b>TEL</b>18162713152</div>
+        <div><b>MAIL</b><a href="mailto:2948631716@qq.com">2948631716@qq.com</a></div>
+        <div><b>GITHUB</b><a href="https://github.com/Zkaixin111" target="_blank" rel="noopener">github.com/Zkaixin111</a></div>
+      </div>
+    </div>
+    <div class="foot-note">本页所有技术描述与开源代码一致 · 数字口径与简历统一 · 2026-10</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  },{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
