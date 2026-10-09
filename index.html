@@ -157,6 +157,23 @@ h2{
 .hl p{font-size:13.8px;color:var(--ink-2);line-height:1.72}
 .hl p b{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:12.8px}
 
+/* ---------- 产品截图 ---------- */
+.shots-head{
+  font-family:var(--mono);font-size:12px;color:var(--ink-3);
+  letter-spacing:.16em;margin:36px 0 14px;
+}
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:760px){.shots{grid-template-columns:1fr}}
+.shot{background:var(--card);border:1px solid var(--line-2);border-radius:10px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.shot:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,30,33,.09)}
+.shot-bar{display:flex;align-items:center;gap:5px;padding:9px 13px;background:#F1EFE9;border-bottom:1px solid var(--line)}
+.shot-bar i{width:8px;height:8px;border-radius:50%;background:var(--line-2)}
+.shot-bar .shot-url{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-left:8px;letter-spacing:.04em}
+.shot img{width:100%;display:block;aspect-ratio:16/9.6;object-fit:cover;object-position:top center}
+.shot-cap{padding:11px 15px;font-size:12.8px;color:var(--ink-2);line-height:1.6;border-top:1px solid var(--line)}
+.shot-cap b{color:var(--ink);font-weight:600}
+.shot-cap .mark{font-family:var(--mono);font-size:10.5px;color:var(--accent);border:1px solid #E5C4BA;background:var(--accent-soft);border-radius:3px;padding:1px 6px;margin-right:7px;vertical-align:1px}
+
 /* ---------- 小项目条 ---------- */
 .mini{
   background:var(--card);border:1px solid var(--line);border-radius:12px;
@@ -318,6 +335,30 @@ footer{border-top:1px solid var(--line);padding:48px 0 56px;background:var(--car
           <h4><span class="idx">F</span>并发与资金安全</h4>
           <p>配额扣减由「查询-判断-更新」三步收敛为<b>单条原子 SQL</b>，以影响行数判定成败消除竞态；支付双端幂等（未支付订单复用 + 订单号唯一索引 + PENDING→PAID 单向状态机 + 回调金额校验）。</p>
         </div>
+      </div>
+
+      <div class="shots-head">PRODUCT SCREENSHOTS / 产品实录</div>
+      <div class="shots">
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 首页</span></div>
+          <img src="images/cowrite-1-home.png" alt="协笔 CoWrite 首页：输入选题开始创作，右侧展示生成-确认-再生成的流程预览" loading="lazy">
+          <figcaption class="shot-cap"><b>首页</b>——「生成、确认、再生成，每一步都由你掌控」，创建前即可看到完整干预流程。</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 创建任务</span></div>
+          <img src="images/cowrite-2-create.png" alt="创作配置页：选题输入、文章风格、目标字数，左侧为六步创作流程可视化" loading="lazy">
+          <figcaption class="shot-cap"><b>任务创建</b>——风格 / 字数可选，左侧同步可视化六步智能体流水线进度。</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 大纲确认点</span></div>
+          <img src="images/cowrite-3-confirm.png" alt="大纲确认点：流程暂停等待用户编辑或让 AI 修改大纲，右侧为智能体执行日志" loading="lazy">
+          <figcaption class="shot-cap"><span class="mark">核心</span><b>大纲确认点</b>——流水线在此暂停：用户可编辑要点、让 AI 继续修改，或确认后生成正文；右侧为智能体执行日志实时输出。</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 成文输出</span></div>
+          <img src="images/cowrite-4-result.jpg" alt="最终成文：图文合成结果，正文配图自动插入" loading="lazy">
+          <figcaption class="shot-cap"><b>成文输出</b>——确认后自动完成正文撰写与配图抓取，图文合成交付。</figcaption>
+        </figure>
       </div>
     </div>
   </div>
