@@ -253,6 +253,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 56px;background:var(--car
       多智能体协作写作平台与 RAG 知识问答平台，覆盖 <strong>Agent 编排、RAG 检索链路、Function Calling、SSE 流式推送与 LLM 可观测</strong>，每个技术点都有真实代码可查。
     </p>
     <div class="hero-facts">
+      <span class="fact"><span class="fact-dot"></span>3 个 AI 项目 · <b>2 个已部署上线，在线可体验</b></span>
       <span class="fact"><span class="fact-dot"></span>2 个 AI 全栈项目 · <b>源码开源</b></span>
       <span class="fact"><span class="fact-dot"></span>主力栈 <b>Java / Spring AI</b></span>
       <span class="fact"><span class="fact-dot"></span>模型调用 <b>DashScope / qwen 系列</b></span>
@@ -272,14 +273,41 @@ footer{border-top:1px solid var(--line);padding:48px 0 56px;background:var(--car
     <div class="project reveal">
       <div class="proj-head">
         <div class="proj-title">协笔 CoWrite<span class="en">HITL AI Writing Platform</span></div>
-        <a class="proj-link" href="https://github.com/Zkaixin111/zkx-ai-passage-creator" target="_blank" rel="noopener">GitHub 源码 →</a>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="proj-link" style="background:var(--accent);color:#fff;border-color:var(--accent)" href="http://114.215.197.30:8080" target="_blank" rel="noopener">在线演示 →</a>
+          <a class="proj-link" href="https://github.com/Zkaixin111/zkx-ai-passage-creator" target="_blank" rel="noopener">GitHub 源码 →</a>
+        </div>
       </div>
       <p class="proj-intro">
         针对「AI 一次性生成全文、结果不可控、返工成本高」的痛点，将创作流程重构为 <strong>6 步可干预的智能体流水线</strong>：
         在标题、大纲、配图三个决策点暂停等待用户确认后继续，全程通过 <strong>SSE 实时推送生成进度</strong>。
       </p>
 
-      <div class="chips">
+      <div class="shots-head">PRODUCT SCREENSHOTS / 产品实录 · <a href="http://114.215.197.30:8080" target="_blank" rel="noopener" style="letter-spacing:0">直接打开在线环境 →</a></div>
+      <div class="shots">
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 首页</span></div>
+          <img src="images/cowrite-1-home.png" alt="协笔 CoWrite 首页：输入选题开始创作，右侧展示生成-确认-再生成的流程预览" loading="lazy">
+          <figcaption class="shot-cap"><b>首页</b>——「生成、确认、再生成，每一步都由你掌控」，创建前即可看到完整干预流程。</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 创建任务</span></div>
+          <img src="images/cowrite-2-create.png" alt="创作配置页：选题输入、文章风格、目标字数，左侧为六步创作流程可视化" loading="lazy">
+          <figcaption class="shot-cap"><b>任务创建</b>——风格 / 字数可选，左侧同步可视化六步智能体流水线进度。</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 大纲确认点</span></div>
+          <img src="images/cowrite-3-confirm.png" alt="大纲确认点：流程暂停等待用户编辑或让 AI 修改大纲，右侧为智能体执行日志" loading="lazy">
+          <figcaption class="shot-cap"><span class="mark">核心</span><b>大纲确认点</b>——流水线在此暂停：用户可编辑要点、让 AI 继续修改，或确认后生成正文；右侧为智能体执行日志实时输出。</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 成文输出</span></div>
+          <img src="images/cowrite-4-result.jpg" alt="最终成文：图文合成结果，正文配图自动插入" loading="lazy">
+          <figcaption class="shot-cap"><b>成文输出</b>——确认后自动完成正文撰写与配图抓取，图文合成交付。</figcaption>
+        </figure>
+      </div>
+
+      <div class="chips" style="margin-top:32px">
         <span class="chip hot">Spring Boot 3.4</span>
         <span class="chip hot">Spring AI Alibaba · StateGraph</span>
         <span class="chip hot">多智能体编排</span>
@@ -336,30 +364,6 @@ footer{border-top:1px solid var(--line);padding:48px 0 56px;background:var(--car
           <p>配额扣减由「查询-判断-更新」三步收敛为<b>单条原子 SQL</b>，以影响行数判定成败消除竞态；支付双端幂等（未支付订单复用 + 订单号唯一索引 + PENDING→PAID 单向状态机 + 回调金额校验）。</p>
         </div>
       </div>
-
-      <div class="shots-head">PRODUCT SCREENSHOTS / 产品实录</div>
-      <div class="shots">
-        <figure class="shot">
-          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 首页</span></div>
-          <img src="images/cowrite-1-home.png" alt="协笔 CoWrite 首页：输入选题开始创作，右侧展示生成-确认-再生成的流程预览" loading="lazy">
-          <figcaption class="shot-cap"><b>首页</b>——「生成、确认、再生成，每一步都由你掌控」，创建前即可看到完整干预流程。</figcaption>
-        </figure>
-        <figure class="shot">
-          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 创建任务</span></div>
-          <img src="images/cowrite-2-create.png" alt="创作配置页：选题输入、文章风格、目标字数，左侧为六步创作流程可视化" loading="lazy">
-          <figcaption class="shot-cap"><b>任务创建</b>——风格 / 字数可选，左侧同步可视化六步智能体流水线进度。</figcaption>
-        </figure>
-        <figure class="shot">
-          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 大纲确认点</span></div>
-          <img src="images/cowrite-3-confirm.png" alt="大纲确认点：流程暂停等待用户编辑或让 AI 修改大纲，右侧为智能体执行日志" loading="lazy">
-          <figcaption class="shot-cap"><span class="mark">核心</span><b>大纲确认点</b>——流水线在此暂停：用户可编辑要点、让 AI 继续修改，或确认后生成正文；右侧为智能体执行日志实时输出。</figcaption>
-        </figure>
-        <figure class="shot">
-          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">cowrite · 成文输出</span></div>
-          <img src="images/cowrite-4-result.jpg" alt="最终成文：图文合成结果，正文配图自动插入" loading="lazy">
-          <figcaption class="shot-cap"><b>成文输出</b>——确认后自动完成正文撰写与配图抓取，图文合成交付。</figcaption>
-        </figure>
-      </div>
     </div>
   </div>
 </section>
@@ -375,13 +379,30 @@ footer{border-top:1px solid var(--line);padding:48px 0 56px;background:var(--car
     <div class="project reveal">
       <div class="proj-head">
         <div class="proj-title">先贤阁<span class="en">Sage AI Q&amp;A Platform</span></div>
-        <a class="proj-link" href="https://github.com/Zkaixin111/zkx-ai-sage-agent" target="_blank" rel="noopener">GitHub 源码 →</a>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="proj-link" style="background:var(--accent);color:#fff;border-color:var(--accent)" href="http://114.215.197.30:8090" target="_blank" rel="noopener">在线演示 →</a>
+          <a class="proj-link" href="https://github.com/Zkaixin111/zkx-ai-sage-agent" target="_blank" rel="noopener">GitHub 源码 →</a>
+        </div>
       </div>
       <p class="proj-intro">
         基于 Spring AI + Spring Boot 构建的多角色 AI 问答平台：支持 <strong>6 位哲学家人设对话</strong>、RAG 知识库检索、工具调用与多角色思辨对辩。
       </p>
 
-      <div class="chips">
+      <div class="shots-head">PRODUCT SCREENSHOTS / 产品实录 · <a href="http://114.215.197.30:8090" target="_blank" rel="noopener" style="letter-spacing:0">直接打开在线环境 →</a></div>
+      <div class="shots">
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">sage · 角色对话</span></div>
+          <img src="images/sage-1-chat.png" alt="先贤阁角色对话：萨特人设就「自由」问题给出个性化回答，侧栏含对话、深度思考、思辨决斗场、看板等功能" loading="lazy">
+          <figcaption class="shot-cap"><b>角色对话</b>——萨特人设就用户提问给出贴合人设的回答；对话记忆压缩持久化，同一先贤跨会话延续语境。侧栏为对话 / 深度思考 / 思辨决斗场 / 看板等功能入口。</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">sage · 思辨决斗场</span></div>
+          <img src="images/sage-2-debate.png" alt="思辨决斗场：苏格拉底（正方）与尼采（反方）围绕辩题展开三轮对辩，图为第 1 轮交锋" loading="lazy">
+          <figcaption class="shot-cap"><span class="mark">核心</span><b>思辨决斗场</b>——苏格拉底 VS 尼采三轮对辩（第 1/3 轮）：双方各携独立 RAG 知识库发言，发言顺序由确定性状态机编排，SSE 流式呈现。</figcaption>
+        </figure>
+      </div>
+
+      <div class="chips" style="margin-top:32px">
         <span class="chip hot">Spring AI</span>
         <span class="chip hot">RAG 全链路</span>
         <span class="chip hot">PGvector · HNSW</span>
@@ -430,20 +451,6 @@ footer{border-top:1px solid var(--line);padding:48px 0 56px;background:var(--car
           <h4><span class="idx">F</span>LLM 全链路可观测</h4>
           <p>基于 Micrometer + Actuator 对 <b>五类对象</b>（LLM 调用 / 工具调用 / RAG 检索 / Embedding 缓存 / 语义缓存）全链路打点，采集 Token 消耗、耗时、错误率与缓存命中率，对接 Prometheus / Grafana。</p>
         </div>
-      </div>
-
-      <div class="shots-head">PRODUCT SCREENSHOTS / 产品实录</div>
-      <div class="shots">
-        <figure class="shot">
-          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">sage · 角色对话</span></div>
-          <img src="images/sage-1-chat.png" alt="先贤阁角色对话：萨特人设就「自由」问题给出个性化回答，侧栏含对话、深度思考、思辨决斗场、看板等功能" loading="lazy">
-          <figcaption class="shot-cap"><b>角色对话</b>——萨特人设就用户提问给出贴合人设的回答；对话记忆压缩持久化，同一先贤跨会话延续语境。侧栏为对话 / 深度思考 / 思辨决斗场 / 看板等功能入口。</figcaption>
-        </figure>
-        <figure class="shot">
-          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">sage · 思辨决斗场</span></div>
-          <img src="images/sage-2-debate.png" alt="思辨决斗场：苏格拉底（正方）与尼采（反方）围绕辩题展开三轮对辩，图为第 1 轮交锋" loading="lazy">
-          <figcaption class="shot-cap"><span class="mark">核心</span><b>思辨决斗场</b>——苏格拉底 VS 尼采三轮对辩（第 1/3 轮）：双方各携独立 RAG 知识库发言，发言顺序由确定性状态机编排，SSE 流式呈现。</figcaption>
-        </figure>
       </div>
     </div>
   </div>
@@ -538,7 +545,8 @@ footer{border-top:1px solid var(--line);padding:48px 0 56px;background:var(--car
         <div><b>GITHUB</b><a href="https://github.com/Zkaixin111" target="_blank" rel="noopener">github.com/Zkaixin111</a></div>
       </div>
     </div>
-    <div class="foot-note">本页所有技术描述与开源代码一致 · 数字口径与简历统一 · 2026-10</div>
+    <div class="foot-note">本页所有技术描述与开源代码一致 · 数字口径与简历统一 · 2026-10<br>
+    在线环境部署于阿里云 ECS（Ubuntu / Docker / Nginx / systemd）：协笔与先贤阁常驻运行，链接长期可访问。</div>
   </div>
 </footer>
 
